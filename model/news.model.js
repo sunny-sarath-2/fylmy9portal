@@ -1,0 +1,10 @@
+let mongoose = require("mongoose");
+
+let news_schema = mongoose.Schema({
+  reference: String,
+  collection_name: String
+});
+
+const news_model = mongoose.model("news", news_schema);
+
+module.exports = news_model;
