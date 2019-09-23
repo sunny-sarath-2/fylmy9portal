@@ -6,6 +6,7 @@ const Action = props => {
       <i
         className="fa fa-eye fa-looks"
         onClick={() => {
+          props.props.history.push("/gossips/edit/123");
           console.log(props);
         }}
         style={{ margin: "6px" }}

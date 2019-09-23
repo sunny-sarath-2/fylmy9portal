@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { View, Edit } from "./pages";
 import { makeStyles } from "@material-ui/styles";
-
-import { Table } from "../../components/Table";
-
-import { TableStructure } from "./components";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,7 +17,14 @@ const Reviews = props => {
 
   return (
     <div className={classes.root}>
-      <Table columns={TableStructure} />
+      <Switch>
+        <Route exact path="/reviews" component={props => <View {...props} />} />
+        <Route
+          exact
+          path="/reviews/edit/:id"
+          component={props => <Edit {...props} />}
+        />
+      </Switch>
     </div>
   );
 };

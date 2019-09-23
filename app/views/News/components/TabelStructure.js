@@ -36,6 +36,3 @@ const columns = props => {
 };
 
 export default columns;
-// const columns =
-
-// export default columns;

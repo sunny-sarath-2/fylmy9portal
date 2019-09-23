@@ -29,37 +29,23 @@ const Routes = () => {
       />
       <RouteWithLayout
         component={UserListView}
-        exact
         layout={MainLayout}
         path="/users"
       />
-      <RouteWithLayout
-        component={NewsView}
-        // exact
-        layout={MainLayout}
-        path="/News"
-      />
+      <RouteWithLayout component={NewsView} layout={MainLayout} path="/News" />
       <RouteWithLayout
         component={ReviewsView}
-        exact
         layout={MainLayout}
         path="/Reviews"
       />
       <RouteWithLayout
         component={TrailersView}
-        exact
         layout={MainLayout}
         path="/trailers"
       />
-      <RouteWithLayout
-        component={GossipsView}
-        exact
-        layout={MainLayout}
-        path="/gallery"
-      />
+
       <RouteWithLayout
         component={InterViews}
-        exact
         layout={MainLayout}
         path="/interviews"
       />
@@ -77,7 +63,6 @@ const Routes = () => {
       />
       <RouteWithLayout
         component={GossipsView}
-        exact
         layout={MainLayout}
         path="/Gossips"
       />

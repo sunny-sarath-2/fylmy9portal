@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/styles';
-
-import { CustomTable } from './components';
-
-import TableStructure from './Devices/TabelStructure';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { View, Edit } from "./pages";
+import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,7 +17,14 @@ const UserList = () => {
 
   return (
     <div className={classes.root}>
-      <CustomTable columns={TableStructure} />
+      <Switch>
+        <Route exact path="/users" component={props => <View {...props} />} />
+        <Route
+          exact
+          path="/users/edit/:id"
+          component={props => <Edit {...props} />}
+        />
+      </Switch>
     </div>
   );
 };
