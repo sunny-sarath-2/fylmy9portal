@@ -1,9 +1,11 @@
 let review_model = require("../model/reviews.model");
 
 exports.get_all_service = async () => {
+  return await review_model.find();
+};
+exports.get_published_service = async () => {
   return await review_model.find({ status: true });
 };
-
 exports.get_one_review_service = async (id, callback) => {
   review_model.findById(id, callback);
 };

@@ -2,7 +2,7 @@ import React from "react";
 import Action from "./Action";
 
 const columns = props => {
-  console.log(props);
+  
   return [
     {
       Header: "Owner",

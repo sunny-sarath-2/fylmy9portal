@@ -7,7 +7,10 @@ exports.review_get_all = async (req, res) => {
   let result = await review_service.get_all_service();
   res.status(200).json({ status: 200, result: result, message: "all reviews" });
 };
-
+exports.review_get_published = async (req, res) => {
+  let result = await review_service.get_published_service();
+  res.status(200).json({ status: 200, result: result, message: "all reviews" });
+};
 exports.review_get_one = (req, res) => {
   let reference_id = req.params._id;
   review_service.get_one_review_service(reference_id, (err, result) => {

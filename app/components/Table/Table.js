@@ -12,7 +12,7 @@ const data = [
 ];
 
 const Table = props => {
-  let { columns } = props;
+  let { columns, data } = props;
   return (
     <ReactTable
       data={data}
