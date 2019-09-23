@@ -1,8 +1,8 @@
-import React from 'react';
-import { Switch, Redirect } from 'react-router-dom';
+import React from "react";
+import { Switch, Redirect } from "react-router-dom";
 
-import { RouteWithLayout } from './components';
-import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
+import { RouteWithLayout } from "./components";
+import { Main as MainLayout, Minimal as MinimalLayout } from "./layouts";
 
 import {
   Dashboard as DashboardView,
@@ -15,7 +15,7 @@ import {
   SignUp as SignUpView,
   SignIn as SignInView,
   NotFound as NotFoundView
-} from './views';
+} from "./views";
 
 const Routes = () => {
   return (
@@ -35,7 +35,7 @@ const Routes = () => {
       />
       <RouteWithLayout
         component={NewsView}
-        exact
+        // exact
         layout={MainLayout}
         path="/News"
       />

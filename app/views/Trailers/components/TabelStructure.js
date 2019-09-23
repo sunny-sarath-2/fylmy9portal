@@ -3,7 +3,7 @@ import Action from "./Action";
 
 const columns = [
   {
-    Header: "Owner",
+    Header: "Owner2",
     accessor: "owner",
     className: "react-table-center"
   },
