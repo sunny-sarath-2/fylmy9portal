@@ -1,5 +1,5 @@
 let mongoose = require("mongoose");
-const server = "13.233.197.81:27017";
+const server = "13.232.19.13:27017";
 const DatabaseName = "test";
 const uri = `mongodb://${server}/${DatabaseName}`;
 class Database {

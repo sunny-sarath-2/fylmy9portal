@@ -48,12 +48,21 @@ exports.review_put = async (req, res) => {
   try {
     let check_authorization = await common.verify(req.token, "secret");
     if (check_authorization.status) {
-      let result = await review_service.put_one_service(req.body);
-      res.send({
-        status: 200,
-        result: result,
-        message: "updated successfully"
-      });
+      if (req.body._id) {
+        let result = await review_service.put_one_service(req.body);
+        res.send({
+          status: 200,
+          result: result,
+          message: "updated successfully"
+        });
+      } else {
+        res.send({
+          status: 400,
+          result: {},
+          err: "no id found",
+          message: "not found"
+        });
+      }
     }
   } catch (error) {
     res.status(400).json({

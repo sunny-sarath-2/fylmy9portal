@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import { View, Edit } from "./pages";
+import { View, Edit, Create } from "./pages";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -23,6 +23,11 @@ const Reviews = props => {
           exact
           path="/reviews/edit/:id"
           component={props => <Edit {...props} />}
+        />
+        <Route
+          exact
+          path="/reviews/create"
+          component={props => <Create {...props} />}
         />
       </Switch>
     </div>

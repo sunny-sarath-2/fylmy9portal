@@ -20,6 +20,7 @@ async function checkStatus(response) {
 }
 
 function getJwtToken() {
+  return "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJfaWQiOiI1ZDg1MjQ3ZDMxNjA3MDRjYzVjNWE5MmYiLCJ1c2VybmFtZSI6InZpc3dhbnRoIiwicGFzc3dvcmQiOiIyMDJjYjk2MmFjNTkwNzViOTY0YjA3MTUyZDIzNGI3MCIsInR5cGUiOjEsInN0YXR1cyI6dHJ1ZSwiX192IjowfV0sImlhdCI6MTU2OTgyMzQ5MiwiZXhwIjoxNTY5ODI3MDkyfQ.AOlxWXh0byMM5YQVTpxOXj1ocf736hLh3QosLpFoYMU";
   //return appController.jwtToken
 }
 
@@ -32,7 +33,7 @@ function getHeaders(url) {
     : {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "x-access-token": getJwtToken()
+        Authorization: getJwtToken()
       };
 }
 
