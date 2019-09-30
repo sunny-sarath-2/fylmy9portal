@@ -35,6 +35,7 @@ class Edit extends Component {
     });
   }
   fieldValueChange(e, fieldName) {
+    console.log(e);
     let duplicateState = this.state.original;
     duplicateState[fieldName] = e;
     this.setState({ original: duplicateState });

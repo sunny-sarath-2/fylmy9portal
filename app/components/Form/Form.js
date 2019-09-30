@@ -88,29 +88,8 @@ const Form = ({ fieldDetails }) => {
                 fieldValueChange(data, fieldStateName);
               }}
               onInit={editor => {
-                console.log("intial");
-                setTimeout(() => {
-                  const data = editor.getData();
-                  fieldValueChange(data, fieldStateName);
-                }, 500);
-              }}
-              config={{
-                placeholder: "start writing your review"
-              }}
-            />
-          </div>
-        );
-        break;
-      case "wiziwigNew":
-        return (
-          <div>
-            <Typography variant="subtitle1">{fieldName}</Typography>
-            <CKEditor
-              editor={BalloonEditor}
-              data={fieldValue}
-              onChange={(event, editor) => {
                 const data = editor.getData();
-                fieldValueChange(data, fieldStateName);
+                if (data != fieldValue) editor.setData(fieldValue);
               }}
               config={{
                 placeholder: "start writing your review"

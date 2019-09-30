@@ -80,7 +80,7 @@ class Create extends Component {
         fieldStateName: "title"
       },
       {
-        formType: "wiziwigNew",
+        formType: "wiziwig",
         fieldValue: this.state.review,
         fieldValueChange: this.fieldValueChange,
         fieldName: "Review",
