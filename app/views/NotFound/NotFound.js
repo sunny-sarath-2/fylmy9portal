@@ -1,25 +1,27 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { Grid, Typography } from '@material-ui/core';
-
+import React from "react";
+import { makeStyles } from "@material-ui/styles";
+import { Grid, Typography } from "@material-ui/core";
+import Appcontroller from "../../controller/appController";
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(4)
   },
   content: {
     paddingTop: 150,
-    textAlign: 'center'
+    textAlign: "center"
   },
   image: {
     marginTop: 50,
-    display: 'inline-block',
-    maxWidth: '100%',
+    display: "inline-block",
+    maxWidth: "100%",
     width: 560
   }
 }));
 
 const NotFound = () => {
   const classes = useStyles();
+  let result = Appcontroller.loginChecker();
+  !result ? props.history.push("/sign-in") : null;
 
   return (
     <div className={classes.root}>

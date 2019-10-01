@@ -19,6 +19,7 @@ class Create extends Component {
       review: "",
       status: true,
       title: "",
+      image: "",
       error: false
     };
     this.fieldValueChange = this.fieldValueChange.bind(this);
@@ -78,6 +79,13 @@ class Create extends Component {
         fieldValueChange: this.fieldValueChange,
         fieldName: "Title",
         fieldStateName: "title"
+      },
+      {
+        formType: "image",
+        fieldValue: this.state.image,
+        fieldValueChange: this.fieldValueChange,
+        fieldName: "Image",
+        fieldStateName: "image"
       },
       {
         formType: "wiziwig",

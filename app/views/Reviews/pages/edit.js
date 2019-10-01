@@ -20,6 +20,7 @@ class Edit extends Component {
         review_created_date: "",
         status: "",
         title: "",
+        image: "",
         _id: ""
       },
       index: 0
@@ -35,7 +36,6 @@ class Edit extends Component {
     });
   }
   fieldValueChange(e, fieldName) {
-    console.log(e);
     let duplicateState = this.state.original;
     duplicateState[fieldName] = e;
     this.setState({ original: duplicateState });
@@ -82,6 +82,13 @@ class Edit extends Component {
         fieldValueChange: this.fieldValueChange,
         fieldName: "Title",
         fieldStateName: "title"
+      },
+      {
+        formType: "image",
+        fieldValue: this.state.original.image,
+        fieldValueChange: this.fieldValueChange,
+        fieldName: "Image",
+        fieldStateName: "image"
       },
       {
         formType: "wiziwig",

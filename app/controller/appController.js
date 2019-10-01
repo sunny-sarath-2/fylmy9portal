@@ -13,6 +13,16 @@ const AppController = {
     errorCount = Object.values(error);
     errorCount == 0 ? null : (status = false);
     return { status: status, fields: error, count: errorCount };
+  },
+  loginChecker() {
+    let token = localStorage.getItem("jwt");
+    console.log(token);
+    let result = false;
+    token == null ? null : (result = true);
+    return result;
+  },
+  setlogin(token) {
+    localStorage.setItem("jwt", token);
   }
 };
 export default AppController;

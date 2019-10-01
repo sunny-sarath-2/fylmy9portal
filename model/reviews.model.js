@@ -3,6 +3,7 @@ let mongoose = require("mongoose");
 let review_schemma = mongoose.Schema({
   title: String,
   review: String,
+  image: String,
   movie: String,
   movie_director: String,
   movie_producer: String,

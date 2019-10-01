@@ -12,6 +12,7 @@ import {
   LatestProducts,
   LatestOrders
 } from "./components";
+import Appcontroller from "../../controller/appController";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,9 +20,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Dashboard = () => {
+const Dashboard = props => {
   const classes = useStyles();
-
+  let result = Appcontroller.loginChecker();
+  !result ? props.history.push("/sign-in") : null;
   return (
     <div className={classes.root}>
       <Grid container spacing={4}>

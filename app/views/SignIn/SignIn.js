@@ -12,8 +12,9 @@ import {
   Typography
 } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-
 import { Facebook as FacebookIcon, Google as GoogleIcon } from "../../icons";
+import Appcontroller from "../../controller/appController";
+import API from "../../services/API";
 
 const schema = {
   email: {
@@ -127,6 +128,8 @@ const useStyles = makeStyles(theme => ({
 
 const SignIn = props => {
   const { history } = props;
+  let result = Appcontroller.loginChecker();
+  !result ? null : history.push("/dashboard");
 
   const classes = useStyles();
 
@@ -170,13 +173,16 @@ const SignIn = props => {
     }));
   };
 
-  const handleSignIn = event => {
+  const handleSignIn = async event => {
     event.preventDefault();
-    history.push("/");
+    console.log(formState.values);
+    let result = await API.login(formState.values);
+    result.status == 401 ? null : Appcontroller.setlogin(result.token);
+    result.status == 401 ? null : history.push("/");
   };
 
   const hasError = field =>
-    formState.touched[field] && formState.errors[field] ? true : false;
+    formState.touched[field] && formState.errors[field] ? false : false;
 
   return (
     <div className={classes.root}>
@@ -201,49 +207,18 @@ const SignIn = props => {
         </Grid>
         <Grid className={classes.content} item lg={7} xs={12}>
           <div className={classes.content}>
-            <div className={classes.contentHeader}>
-              <IconButton onClick={handleBack}>
-                <ArrowBackIcon />
-              </IconButton>
-            </div>
             <div className={classes.contentBody}>
               <form className={classes.form} onSubmit={handleSignIn}>
                 <Typography className={classes.title} variant="h2">
                   Sign in
                 </Typography>
-                <Typography color="textSecondary" gutterBottom>
-                  Sign in with social media
-                </Typography>
-                <Grid className={classes.socialButtons} container spacing={2}>
-                  <Grid item>
-                    <Button
-                      color="primary"
-                      onClick={handleSignIn}
-                      size="large"
-                      variant="contained"
-                    >
-                      <FacebookIcon className={classes.socialIcon} />
-                      Login with Facebook
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button
-                      onClick={handleSignIn}
-                      size="large"
-                      variant="contained"
-                    >
-                      <GoogleIcon className={classes.socialIcon} />
-                      Login with Google
-                    </Button>
-                  </Grid>
-                </Grid>
                 <Typography
                   align="center"
                   className={classes.sugestion}
                   color="textSecondary"
                   variant="body1"
                 >
-                  or login with email address
+                  login with username
                 </Typography>
                 <TextField
                   className={classes.textField}
@@ -252,11 +227,11 @@ const SignIn = props => {
                   helperText={
                     hasError("email") ? formState.errors.email[0] : null
                   }
-                  label="Email address"
-                  name="email"
+                  label="user name"
+                  name="username"
                   onChange={handleChange}
                   type="text"
-                  value={formState.values.email || ""}
+                  value={formState.values.username || ""}
                   variant="outlined"
                 />
                 <TextField
@@ -276,7 +251,6 @@ const SignIn = props => {
                 <Button
                   className={classes.signInButton}
                   color="primary"
-                  disabled={!formState.isValid}
                   fullWidth
                   size="large"
                   type="submit"
@@ -284,12 +258,6 @@ const SignIn = props => {
                 >
                   Sign in now
                 </Button>
-                <Typography color="textSecondary" variant="body1">
-                  Don't have an account?{" "}
-                  <Link component={RouterLink} to="/sign-up" variant="h6">
-                    Sign up
-                  </Link>
-                </Typography>
               </form>
             </div>
           </div>

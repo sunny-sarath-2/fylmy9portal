@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import EdiText from "react-editext";
-import { Typography, Switch } from "@material-ui/core";
+import { Typography, Switch, TextField } from "@material-ui/core";
 import CreatableSelect from "react-select/creatable";
 import BalloonEditor from "@ckeditor/ckeditor5-build-balloon-block";
 import CKEditor from "@ckeditor/ckeditor5-react";
+import FileBase64 from "react-file-base64";
 
 const Form = ({ fieldDetails }) => {
   if (fieldDetails) {
@@ -16,6 +17,7 @@ const Form = ({ fieldDetails }) => {
       fieldStateName
     } = fieldDetails;
 
+    console.log(formType);
     switch (formType) {
       case "text":
         return (
@@ -32,6 +34,26 @@ const Form = ({ fieldDetails }) => {
               value={fieldValue}
               onSave={e => fieldValueChange(e, fieldStateName)}
             />
+          </div>
+        );
+        break;
+      case "image":
+        console.log("test");
+        return (
+          <div>
+            <Typography variant="subtitle1">{fieldName}</Typography>
+            <FileBase64
+              onDone={e => {
+                fieldValueChange(e.base64, fieldStateName);
+              }}
+            />
+            {console.log(fieldValue)}
+            {fieldValue == "" ? null : (
+              <img
+                style={{ width: "600px", height: "300px" }}
+                src={`${fieldValue}`}
+              />
+            )}
           </div>
         );
         break;
