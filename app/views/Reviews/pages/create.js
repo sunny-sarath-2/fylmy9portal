@@ -20,7 +20,8 @@ class Create extends Component {
       status: true,
       title: "",
       image: "",
-      error: false
+      error: false,
+      rating: 0
     };
     this.fieldValueChange = this.fieldValueChange.bind(this);
     this.collectForm = this.collectForm.bind(this);
@@ -36,6 +37,7 @@ class Create extends Component {
     console.log(validationResult);
     if (validationResult.status) {
       let result = await API.createReview(this.state);
+      this.props.history.push("/reviews");
       console.log(result);
     } else {
       this.setState({ error: true });
@@ -50,7 +52,6 @@ class Create extends Component {
     const { error } = this.state;
     return (
       <div style={{ background: "#fff", padding: "15px" }}>
-        {/* <h1>{this.state.test}</h1> */}
         {formData.length == 0
           ? null
           : formData.map((element, key) => {
@@ -149,6 +150,13 @@ class Create extends Component {
         fieldValueChange: this.fieldValueChange,
         fieldName: "tags",
         fieldStateName: "movie_tags"
+      },
+      {
+        formType: "range",
+        fieldValue: this.state.rating,
+        fieldValueChange: this.fieldValueChange,
+        fieldName: "rating",
+        fieldStateName: "rating"
       },
       {
         formType: "switch",

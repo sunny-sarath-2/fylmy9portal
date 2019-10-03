@@ -1,10 +1,12 @@
 let review_model = require("../model/reviews.model");
 
 exports.get_all_service = async () => {
-  return await review_model.find();
+  return await review_model.find().sort({ review_created_date: -1 });
 };
 exports.get_published_service = async () => {
-  return await review_model.find({ status: true });
+  return await review_model
+    .find({ status: true })
+    .sort({ review_created_date: -1 });
 };
 exports.get_one_review_service = async (id, callback) => {
   review_model.findById(id, callback);
@@ -29,5 +31,7 @@ exports.delete_Service = async reference_id => {
   );
 };
 exports.get_many_by_id_service = async ids => {
-  return await review_model.find({ _id: { $in: ids } });
+  return await review_model
+    .find({ $and: [{ _id: { $in: ids } }, { status: { $eq: true } }] })
+    .sort({ review_created_date: -1 });
 };

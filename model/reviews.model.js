@@ -13,7 +13,8 @@ let review_schemma = mongoose.Schema({
   movie_editor: String,
   movie_tags: [String],
   status: Boolean,
-  review_created_date: Date
+  review_created_date: Date,
+  rating: Number
 });
 
 const review_model = mongoose.model("reviews", review_schemma);

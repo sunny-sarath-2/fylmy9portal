@@ -11,17 +11,23 @@ class View extends Component {
       reviewsData: []
     };
     this.createReview = this.createReview.bind(this);
+    this.deleteReview = this.deleteReview.bind(this);
   }
   async componentDidMount() {
     let reviewData = await API.getAllReviews();
     this.setState({ reviewsData: reviewData.result });
   }
   createReview() {
-    console.log(this.props);
     this.props.history.push("/reviews/create");
   }
+  async deleteReview(id) {
+    if (confirm("delete row")) {
+      let result = await API.deleteReview(id);
+      if (result.status == 200) alert("successfully deleted review");
+    }
+  }
   render() {
-    const structure = TableStructure(this.props);
+    const structure = TableStructure(this.props, this.deleteReview);
     const { reviewsData } = this.state;
     return (
       <div>

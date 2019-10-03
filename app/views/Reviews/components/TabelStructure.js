@@ -1,7 +1,7 @@
 import React from "react";
 import Action from "./Action";
 
-const columns = props => {
+const columns = (props, deleteRow) => {
   return [
     {
       Header: "Row",
@@ -38,7 +38,7 @@ const columns = props => {
       Header: "ACTION", // Custom header components!
       // accessor: "ACTION",
       Cell: row => {
-        return <Action rowData={row} props={props} />;
+        return <Action rowData={row} {...props} deleteRow={deleteRow} />;
       },
       className: "react-table-center"
     }

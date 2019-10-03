@@ -21,7 +21,8 @@ class Edit extends Component {
         status: "",
         title: "",
         image: "",
-        _id: ""
+        _id: "",
+        rating: 0
       },
       index: 0
     };
@@ -42,7 +43,9 @@ class Edit extends Component {
   }
   async updateData() {
     let result = await API.updateReview(this.state.original);
-    console.log(result);
+    if (result.status == 200) {
+      this.props.history.push("/reviews");
+    }
   }
   render() {
     const formData = this.collectForm();
@@ -159,6 +162,13 @@ class Edit extends Component {
         fieldValueChange: this.fieldValueChange,
         fieldName: "Created Date",
         fieldStateName: "review_created_date"
+      },
+      {
+        formType: "range",
+        fieldValue: this.state.original.rating,
+        fieldValueChange: this.fieldValueChange,
+        fieldName: "rating",
+        fieldStateName: "rating"
       },
       {
         formType: "switch",

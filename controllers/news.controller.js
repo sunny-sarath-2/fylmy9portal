@@ -22,11 +22,9 @@ exports.news_get_all = async (req, res) => {
   data[2] = reviews_service.get_many_by_id_service(ids[2]);
   data[4] = reviews_service.get_many_by_id_service(ids[4]);
   data[3] = reviews_service.get_many_by_id_service(ids[3]);
-
   data = await Promise.all([data[0], data[1], data[2], data[3], data[4]]);
 
   data = [].concat.apply([], data);
   console.timeEnd("news");
-  data.sort();
   res.status(200).json({ data: data });
 };

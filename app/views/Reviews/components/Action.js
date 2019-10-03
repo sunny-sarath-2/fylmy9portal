@@ -1,6 +1,7 @@
 import React from "react";
 
 const Action = props => {
+  console.log(props);
   return (
     <span>
       {/* <i
@@ -11,8 +12,8 @@ const Action = props => {
       <i
         className="fa fa-edit fa-looks"
         onClick={() => {
-          props.props.history.push({
-            pathname: `/reviews/edit/123${props.rowData.original._id}`,
+          props.history.push({
+            pathname: `/reviews/edit/${props.rowData.original._id}`,
             state: {
               original: props.rowData.original,
               index: props.rowData.index
@@ -23,7 +24,7 @@ const Action = props => {
       />
       <i
         className="fa fa-trash-o fa-looks"
-        onClick={() => {}}
+        onClick={() => props.deleteRow(props.rowData.original._id)}
         style={{ margin: "6px" }}
       />
     </span>

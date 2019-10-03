@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import EdiText from "react-editext";
-import { Typography, Switch, TextField } from "@material-ui/core";
+import { Typography, Switch, TextField, Input } from "@material-ui/core";
 import CreatableSelect from "react-select/creatable";
 import BalloonEditor from "@ckeditor/ckeditor5-build-balloon-block";
 import CKEditor from "@ckeditor/ckeditor5-react";
@@ -17,13 +17,12 @@ const Form = ({ fieldDetails }) => {
       fieldStateName
     } = fieldDetails;
 
-    console.log(formType);
     switch (formType) {
       case "text":
         return (
           <div>
-            <Typography variant="subtitle1">{fieldName}</Typography>
-            <EdiText
+            {/* <Typography variant="subtitle1">{fieldName}</Typography> */}
+            {/* <EdiText
               type="text"
               buttonsAlign="before"
               inputProps={{
@@ -33,12 +32,22 @@ const Form = ({ fieldDetails }) => {
               }}
               value={fieldValue}
               onSave={e => fieldValueChange(e, fieldStateName)}
+            /> */}
+            <TextField
+              style={{
+                width: "60%"
+              }}
+              id="standard-name"
+              label={fieldName}
+              value={fieldValue}
+              onChange={e => {
+                fieldValueChange(e.target.value, fieldStateName);
+              }}
             />
           </div>
         );
         break;
       case "image":
-        console.log("test");
         return (
           <div>
             <Typography variant="subtitle1">{fieldName}</Typography>
@@ -47,7 +56,6 @@ const Form = ({ fieldDetails }) => {
                 fieldValueChange(e.base64, fieldStateName);
               }}
             />
-            {console.log(fieldValue)}
             {fieldValue == "" ? null : (
               <img
                 style={{ width: "600px", height: "300px" }}
@@ -126,6 +134,23 @@ const Form = ({ fieldDetails }) => {
             <Typography variant="subtitle1">{fieldName}</Typography>
             <Typography variant="subtitle1">{fieldValue}</Typography>
           </div>
+        );
+        break;
+      case "range":
+        console.log(fieldValue, typeof fieldValue);
+        return (
+          <TextField
+            style={{
+              width: "60%"
+            }}
+            id="standard-name"
+            type="number"
+            label={fieldName}
+            value={fieldValue}
+            onChange={e => {
+              fieldValueChange(e.target.value, fieldStateName);
+            }}
+          />
         );
         break;
       default:

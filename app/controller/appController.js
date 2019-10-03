@@ -16,7 +16,6 @@ const AppController = {
   },
   loginChecker() {
     let token = localStorage.getItem("jwt");
-    console.log(token);
     let result = false;
     token == null ? null : (result = true);
     return result;
