@@ -37,14 +37,6 @@ exports.news_get_all = async (req, res) => {
   ]);
 
   data = [].concat.apply([], data);
-  sorter(data);
   console.timeEnd("news");
   res.status(200).json({ data: data });
-};
-
-const sorter = data => {
-  for (let index = 0; index < data.length; index++) {
-    const element = data[index];
-    // console.log(element.created_date);
-  }
 };
