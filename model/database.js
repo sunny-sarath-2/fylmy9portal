@@ -1,6 +1,6 @@
 let mongoose = require("mongoose");
 const server = "13.232.19.13:27017";
-const DatabaseName = "test";
+const DatabaseName = "fylmy9";
 const uri = `mongodb://${server}/${DatabaseName}`;
 class Database {
   constructor() {
