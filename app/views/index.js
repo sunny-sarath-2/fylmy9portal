@@ -8,3 +8,4 @@ export { default as SignIn } from "./SignIn";
 export { default as SignUp } from "./SignUp";
 export { default as Reviews } from "./Reviews/reviews";
 export { default as UserList } from "./UserList/UserList";
+export { default as Article } from "./articles/article";

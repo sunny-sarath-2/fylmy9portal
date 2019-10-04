@@ -38,7 +38,8 @@ exports.review_post = async (req, res) => {
         .json({ status: 200, result: result, message: "review created" });
       let newsupdate = await news_service.news_post({
         reference: result._id,
-        collection_name: "reviews"
+        collection_name: "reviews",
+        created_date: new Date()
       });
       console.log(newsupdate);
     }

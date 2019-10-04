@@ -14,7 +14,8 @@ import {
   InterViews,
   SignUp as SignUpView,
   SignIn as SignInView,
-  NotFound as NotFoundView
+  NotFound as NotFoundView,
+  Article as ArticleView
 } from "./views";
 
 const Routes = () => {
@@ -37,6 +38,11 @@ const Routes = () => {
         component={ReviewsView}
         layout={MainLayout}
         path="/Reviews"
+      />
+      <RouteWithLayout
+        component={ArticleView}
+        layout={MainLayout}
+        path="/article"
       />
       <RouteWithLayout
         component={TrailersView}

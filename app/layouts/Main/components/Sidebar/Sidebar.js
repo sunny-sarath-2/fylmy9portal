@@ -69,6 +69,11 @@ const Sidebar = props => {
       icon: <TextFieldsIcon />
     },
     {
+      title: "Articles",
+      href: "/article",
+      icon: <TextFieldsIcon />
+    },
+    {
       title: "Trailers",
       href: "/trailers",
       icon: <ImageIcon />

@@ -13,6 +13,9 @@ router.use("/users", users_api);
 const login_api = require("./api/login.route");
 router.use("/login", login_api);
 
+const article_api = require("./api/article.route");
+router.use("/article", article_api);
+
 const image_upload_api = require("./api/image_upload.route");
 router.use("/image_upload", image_upload_api);
 module.exports = router;
