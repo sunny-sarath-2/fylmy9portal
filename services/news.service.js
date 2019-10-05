@@ -3,7 +3,7 @@ let news_model = require("../model/news.model");
 exports.news_get = async () => {
   return await news_model
     .find()
-    .populate("reference")
+    .populate({ path: "reference", match: { status: { $eq: true } } })
     .sort({ created_date: -1 });
 };
 
