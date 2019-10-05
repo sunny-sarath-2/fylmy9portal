@@ -3,6 +3,7 @@ let reviews_service = require("../services/review.service");
 
 exports.news_get_all = async (req, res) => {
   let result = await news_service.news_get();
+  res.status(200).json({ data: result });
   let ids = [[], [], [], [], []];
   result.forEach(element => {
     if (element.collection_name == "reviews") ids[0].push(element.reference);
@@ -26,5 +27,4 @@ exports.news_get_all = async (req, res) => {
 
   data = [].concat.apply([], data);
   console.timeEnd("news");
-  res.status(200).json({ data: data });
 };
