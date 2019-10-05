@@ -6,7 +6,11 @@ exports.news_get = async () => {
     .populate({ path: "reference", match: { status: { $eq: true } } })
     .sort({ created_date: -1 });
 };
-
+exports.news_get_one = async id => {
+  return await news_model
+    .find({ reference: id })
+    .populate({ path: "reference" });
+};
 exports.news_post = async data => {
   let new_news = new news_model(data);
   return await new_news.save();
