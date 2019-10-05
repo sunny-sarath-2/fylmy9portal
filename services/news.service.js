@@ -1,7 +1,10 @@
 let news_model = require("../model/news.model");
 
-exports.news_get = async data => {
-  return await news_model.find();
+exports.news_get = async () => {
+  return await news_model
+    .find()
+    .populate("reference")
+    .sort({ created_date: -1 });
 };
 
 exports.news_post = async data => {
