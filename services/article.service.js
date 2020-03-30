@@ -1,7 +1,7 @@
 const article_model = require("../model/article.model");
 
 exports.get_all_article = async () => {
-  return await article_model.find({}).sort({ article_created_date: -1 });
+  return await article_model.find({}).sort({ created_date: -1 });
 };
 
 exports.get_one_article = async _id => {
@@ -30,5 +30,5 @@ exports.delete_article = async _id => {
 exports.get_many_by_id_service = async ids => {
   return await article_model
     .find({ $and: [{ _id: { $in: ids } }, { status: { $eq: true } }] })
-    .sort({ review_created_date: -1 });
+    .sort({ created_date: -1 });
 };
