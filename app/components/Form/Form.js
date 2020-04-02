@@ -6,6 +6,7 @@ import CreatableSelect from "react-select/creatable";
 import BalloonEditor from "@ckeditor/ckeditor5-build-balloon-block";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import FileBase64 from "react-file-base64";
+import { uploadImage } from '../../common/common'
 
 const Form = ({ fieldDetails }) => {
   if (fieldDetails) {
@@ -51,11 +52,18 @@ const Form = ({ fieldDetails }) => {
         return (
           <div>
             <Typography variant="subtitle1">{fieldName}</Typography>
-            <FileBase64
-              onDone={e => {
-                fieldValueChange(e.base64, fieldStateName);
-              }}
-            />
+            <input type="file" accept="image/png, image/jpeg" onChange={e => {
+                              console.log(e.target.files[0].name)
+                              uploadImage(e.target.files[0], e.target.files[0].name,(data,error)=>{
+                                console.log(data.location,error)
+                                if(!!error)
+                                return 0
+                                else
+                                fieldValueChange(data.location, fieldStateName);
+                              }
+                              )
+            }}/>
+
             {fieldValue == "" ? null : (
               <img
                 style={{ width: "600px", height: "300px" }}
